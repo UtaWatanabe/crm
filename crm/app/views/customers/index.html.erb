@@ -1,7 +1,9 @@
+<div class="col-lg-12">
 <h1>顧客情報一覧</h1>
 <p>お客様情報が表示されます。</p>
 <table class="table table-striped">
   <thead>
+    <th>会社名</th>
     <th>姓</th>
     <th>名</th>
     <th>電子メール</th>
@@ -10,6 +12,8 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <td><%= customer.company.name %></td>
+<!-- 上記はControllerでいうところのCompany.Find(customer.company_id).nameと同様の表記  -->
         <td><%= customer.family_name %></td>
         <td><%= customer.given_name %></td>
         <td><%= customer.email %></td>
@@ -19,3 +23,4 @@
   </tbody>
 </table>
 <%= paginate @customers %>
+</div>

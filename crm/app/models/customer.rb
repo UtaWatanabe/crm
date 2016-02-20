@@ -1,4 +1,7 @@
 class Customer < ActiveRecord::Base
+  belongs_to :company
+  # 会社との関連付け｡
+
   validates :family_name,
     presence: true, length: { maximum: 20 }
   validates :given_name,
