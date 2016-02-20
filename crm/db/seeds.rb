@@ -14,5 +14,10 @@ Company.create(name: "株式会社ノーウォール", url: "http://nowall.co.jp
 Company.create(name: "ヤフー株式会社", url: "http://www.yahoo.co.jp/", address: "東京都港区赤坂9-7-1")
 
 100.times do |index|
-  Customer.create(family_name: "鈴木", given_name: "太郎", email: "customer_#{index}@sparta.com")
+  Customer.create(
+    family_name: "鈴木",
+    given_name: "太郎",
+    email: "customer_#{index}@sparta.com",
+    company_id: rand(3) + 1 )
+  # randはランダム関数｡0〜2をランダム出力するため+1が必要｡
 end
