@@ -17,7 +17,8 @@
       <% if user_signed_in? %>
       <!-- signed_inはdeviseのヘルパーメソッド -->
       <!-- ?をつけるのはtrueかfalseかのいずれかを返すときの慣用句 -->
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></a></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to '編集', edit_user_registration_path %></li>
       <% else %>
         <li><%= link_to '新規登録', new_user_registration_path %></li>
         <li><%= link_to 'ログイン', user_session_path, method: :post %></li>
@@ -25,6 +26,7 @@
       <!-- %=では無いのは表示させる必要が無い記述だから -->
 
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
