@@ -13,7 +13,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-menu">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">ダミー</a></li>
+      <!-- viewの中でログイン時､と未ログイン時で表示を変える-->
+      <% if user_signed_in? %>
+      <!-- signed_inはdeviseのヘルパーメソッド -->
+      <!-- ?をつけるのはtrueかfalseかのいずれかを返すときの慣用句 -->
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></a></li>
+      <% else %>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+        <li><a href="#">ログイン</a></li>
+      <% end %>
+      <!-- %=では無いのは表示させる必要が無い記述だから -->
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
