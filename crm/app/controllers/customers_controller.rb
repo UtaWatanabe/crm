@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+  before_action :set_customer
+  #コールバック：アクションメソッドの外側に書く､アクション前に実施する宣言
+
   def index
     @customers = Customer.all
     @customers = Customer.page(params[:page])
@@ -20,11 +23,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       # => 成功
       redirect_to @customer
@@ -34,11 +35,9 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to @customer
   end
@@ -51,5 +50,9 @@ class CustomersController < ApplicationController
       :given_name,
       :email
       )
+  end
+
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 end
