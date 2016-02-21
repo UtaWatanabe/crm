@@ -25,6 +25,14 @@
     <%= f.label :email %>
     <%= f.text_field :email, class: "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label :company_id %>
+    <!-- 新しいIDをセットする際は必ず､ストロングパラメーターの設定を-->
+    <%= f.collection_select(:company_id, Company.all, :id, :name)%>
+    <!-- :idがdb拡張用のデータ､HTMLのソースコードを見るとoption内に格納されていることが確認できる｡ -->
+    <!-- .allですべてを選択肢と宣言｡選択肢の一部のみを利用するためには､Controllerサイドで設定を変更｡詳細は右記参照 http://railsguides.jp/active_record_querying.html  -->
+
+  </div>
 
   <%= f.submit %>
 <% end %>

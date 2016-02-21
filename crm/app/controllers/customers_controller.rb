@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
-  before_action :set_customer
+  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  #Customerコントローラーにbefore_actionを定義し、show/edit/destroy/updateの共通処理をまとめてください
   #コールバック：アクションメソッドの外側に書く､アクション前に実施する宣言
+  # すべてのアクションの前でメソッドが呼び出されるため､indexページのようなidを保持しないページに対しても動作するため､例外を付与
 
   def index
     @customers = Customer.all
@@ -48,7 +50,8 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(
       :family_name,
       :given_name,
-      :email
+      :email,
+      :company_id
       )
   end
 
