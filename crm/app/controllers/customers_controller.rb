@@ -3,6 +3,9 @@ class CustomersController < ApplicationController
   #Customerコントローラーにbefore_actionを定義し、show/edit/destroy/updateの共通処理をまとめてください
   #コールバック：アクションメソッドの外側に書く､アクション前に実施する宣言
   # すべてのアクションの前でメソッドが呼び出されるため､indexページのようなidを保持しないページに対しても動作するため､例外を付与
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  #アクセス制限をかけるコマンド
+  #onlyオプションで制限を緩和
 
   def index
     @customers = Customer.all
